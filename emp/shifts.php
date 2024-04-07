@@ -101,7 +101,12 @@ else{
     <script type="text/javascript" src="../js/plugins/dataTables.bootstrap.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#sampleTable').DataTable();
+            $('#sampleTable').DataTable({
+                "paging": true, // Enable pagination
+                "ordering": true, // Enable sorting
+                "searching": true, // Enable searching
+                "info": true // Enable table information display
+            });
         });
 
         // JavaScript function to assign shift

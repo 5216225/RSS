@@ -77,7 +77,16 @@
     <!-- Data table plugin-->
     <script type="text/javascript" src="../js/plugins/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="../js/plugins/dataTables.bootstrap.min.js"></script>
-    <script type="text/javascript">$('#sampleTable').DataTable();</script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $('#sampleTable').DataTable({
+          "paging": true, // Enable pagination
+          "ordering": true, // Enable sorting
+          "searching": true, // Enable searching
+          "info": true // Enable table information display
+        });
+      });
+    </script>   
    
   </body>
 </html>
