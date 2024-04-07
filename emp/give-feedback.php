@@ -41,6 +41,12 @@
     <link rel="stylesheet" type="text/css" href="../css/main.css">
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .tile {
+            margin: auto;
+            max-width: 800px; /* Adjust the max-width as per your preference */
+        }
+    </style>
   </head>
   <body class="app sidebar-mini rtl">
     <!-- Navbar-->
