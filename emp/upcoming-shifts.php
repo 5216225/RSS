@@ -4,8 +4,7 @@ error_reporting(0);
 require_once('include/config.php');
 if (strlen($_SESSION["Empid"]) == 0) {   
     header('location:index.php');
-}
-else{
+} else {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,6 +18,8 @@ else{
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Data table CSS -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 </head>
 
 <body class="app sidebar-mini rtl">
@@ -30,18 +31,18 @@ else{
     <main class="app-content">
         <div class="row">
             <div class="col-md-12">
-                <div class="tile">
+                <div class="tile animated fadeIn">
                     <div class="tile-body">
-                        <h2 align="center">Upcoming Shifts</h2>
-                        <hr />
-                        <div class="table-responsive">
+                        <h2 class="text-center">Upcoming Shifts</h2>
+                        <hr>
+                        <div class="table-responsive animate__animated animate__fadeIn">
                             <table class="table table-hover table-bordered" id="sampleTable">
                                 <thead>
                                     <tr>
-                                        <th>Shift ID</th>
-                                        <th>Emp ID</th>
-                                        <th>Start Time</th>
-                                        <th>End Time</th>
+                                        <th class="animate__animated animate__fadeInDown">Shift ID</th>
+                                        <th class="animate__animated animate__fadeInDown">Emp ID</th>
+                                        <th class="animate__animated animate__fadeInDown">Start Time</th>
+                                        <th class="animate__animated animate__fadeInDown">End Time</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -57,10 +58,10 @@ else{
                                     
                                     foreach($results as $result){
                                         echo "<tr>";
-                                        echo "<td>{$result->id}</td>";
-                                        echo "<td>{$result->EmpID}</td>";
-                                        echo "<td>{$result->start_time}</td>";
-                                        echo "<td>{$result->end_time}</td>";
+                                        echo "<td class='animate__animated animate__fadeInUp'>{$result->id}</td>";
+                                        echo "<td class='animate__animated animate__fadeInUp'>{$result->EmpID}</td>";
+                                        echo "<td class='animate__animated animate__fadeInUp'>{$result->start_time}</td>";
+                                        echo "<td class='animate__animated animate__fadeInUp'>{$result->end_time}</td>";
                                         echo "</tr>";
                                     }
                                     ?>

@@ -4,8 +4,7 @@ error_reporting(0);
 require_once('include/config.php');
 if (strlen($_SESSION["Empid"]) == 0) {   
     header('location:index.php');
-}
-else{
+} else {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,6 +16,77 @@ else{
     <link rel="stylesheet" type="text/css" href="../css/main.css">
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/animate.css">
+    <!-- Custom CSS -->
+    <style>
+        .animated {
+            animation-duration: 1s;
+            animation-fill-mode: both;
+        }
+
+        @keyframes slideInRight {
+            0% {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .slideInRight {
+            animation-name: slideInRight;
+        }
+
+        .shift-table th,
+        .shift-table td {
+            text-align: center;
+        }
+
+        .shift-table .open-shift-badge {
+            padding: 5px 10px;
+            border-radius: 5px;
+            background-color: #3498db;
+            color: #fff;
+        }
+
+        .shift-table .no-action-badge {
+            padding: 5px 10px;
+            border-radius: 5px;
+            background-color: #555;
+            color: #fff;
+        }
+
+        .shift-table .assigned-badge {
+            padding: 5px 10px;
+            border-radius: 5px;
+            background-color: #2ecc71;
+            color: #fff;
+        }
+
+        .shift-actions {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .shift-actions button {
+            margin-left: 5px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .shift-actions button:hover {
+            background-color: #2980b9;
+        }
+    </style>
 </head>
 
 <body class="app sidebar-mini rtl">
@@ -28,11 +98,11 @@ else{
     <main class="app-content">
         <div class="row">
             <div class="col-md-12">
-                <div class="tile">
+                <div class="tile animated slideInRight">
                     <div class="tile-body">
                         <h2 align="center">Shifts</h2>
-                        <hr />
-                        <table class="table table-hover table-bordered" id="sampleTable">
+                        <hr class="animated fadeIn">
+                        <table class="table table-hover table-bordered shift-table" id="sampleTable">
                             <thead>
                                 <tr>
                                     <th>Shift ID</th>
@@ -55,7 +125,7 @@ else{
                                     echo "<td>{$result->id}</td>";
                                     echo "<td>";
                                     if ($result->EmpID == NULL) {
-                                        echo '<span class="btn btn-info">Open Shift</span>';
+                                        echo '<span class="open-shift-badge animated fadeIn">Open Shift</span>';
                                     } 
                                     else{
                                         echo $result->EmpID;
@@ -64,22 +134,21 @@ else{
                                     echo "<td>{$result->start_time}</td>";
                                     echo "<td>{$result->end_time}</td>";
                                     
-                                    echo "<td>";
+                                    echo "<td class='shift-actions'>";
                                     if ($result->EmpID == NULL) {
-                                        echo '<button class="btn btn-primary" onclick="assignShift('.$result->id.')">Get Shift</button>';
+                                        echo '<button class="animated fadeIn btn-get-shift" onclick="assignShift('.$result->id.')">Get Shift</button>';
                                     } 
                                     else {
                                         if ($result->EmpID == $EmpID) {
-                                            echo '<span class="btn btn-dark">No Action Needed</span>';
+                                            echo '<span class="no-action-badge animated fadeIn">No Action Needed</span>';
                                         } 
                                         else {
-                                            echo '<span class="btn btn-success">Assigned to different employee</span>';
-                                            echo '<button class="btn btn-primary" onclick="swapShift('.$result->id.')" style="margin-left:7px;">Swap Shift</button>';
+                                            echo '<span class="assigned-badge animated fadeIn">Assigned to different employee</span>';
+                                            echo '<button class="btn-swap-shift" onclick="swapShift('.$result->id.')">Swap Shift</button>';
                                         }
                                     }
                                     echo "</td>";
                                     echo "</tr>";
-                                    $cnt++;
                                 }
                                 ?>
                             </tbody>
@@ -94,8 +163,6 @@ else{
     <script src="../js/popper.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/main.js"></script>
-    <!-- The javascript plugin to display page loading on top
-    <script src="js/plugins/pace.min.js"></script>-->
     <!-- Data table plugin-->
     <script type="text/javascript" src="../js/plugins/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="../js/plugins/dataTables.bootstrap.min.js"></script>
@@ -112,24 +179,18 @@ else{
         // JavaScript function to assign shift
         function assignShift(id) {
             var empId = "<?php echo $EmpID?>";
-            console.log("Shift ID: " + id); // Debugging statement
-            console.log("Emp ID: " + empId); // Debugging statement
 
             // Check if both id and empId are provided
             if (id && empId) {
                 // Send AJAX request to assign shift
                 $.ajax({
-                    url: 'assign_shift.php', // Corrected PHP script name
+                    url: 'assign_shift.php',
                     type: 'POST',
-                    data: { id: id, EmpID: empId }, // Ensure correct parameter names
-                    dataType: 'json', // Specify expected data type
+                    data: { id: id, EmpID: empId },
+                    dataType: 'json',
                     success: function(response) {
-                        // Handle response from server
-                        console.log(response); // Debugging statement
                         if (response.success) {
-                            // Update UI or display success message
                             alert("Shift assigned successfully!");
-                            // Reload the page to reflect changes
                             location.reload();
                         } 
                         else {
@@ -149,24 +210,18 @@ else{
         // JavaScript function to swap shift
         function swapShift(id) {
             var empId = "<?php echo $EmpID?>";
-            console.log("Shift ID: " + id); // Debugging statement
-            console.log("Emp ID: " + empId); // Debugging statement
 
             // Check if both id and empId are provided
             if (id && empId) {
                 // Send AJAX request to swap shift
                 $.ajax({
-                    url: 'swap_shift.php', // Adjust URL according to your implementation
+                    url: 'swap_shift.php',
                     type: 'POST',
-                    data: { id: id, EmpID: empId }, // Ensure correct parameter names
-                    dataType: 'json', // Specify expected data type
+                    data: { id: id, EmpID: empId },
+                    dataType: 'json',
                     success: function(response) {
-                        // Handle response from server
-                        console.log(response); // Debugging statement
                         if (response.success) {
-                            // Update UI or display success message
                             alert("Shift swapped successfully!");
-                            // Reload the page to reflect changes
                             location.reload();
                         } 
                         else {
@@ -184,5 +239,6 @@ else{
         }
     </script>
 </body>
+
 </html>
 <?php } ?>

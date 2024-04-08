@@ -1,7 +1,6 @@
 <?php 
   session_start();
-  //error_reporting(0);
-  include  'include/config.php';
+  include 'include/config.php';
   if(strlen($_SESSION["Empid"])==0){   
     header('location:index.php');
   }
@@ -19,6 +18,39 @@
     <link rel="stylesheet" type="text/css" href="../css/main.css">
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Custom CSS for animations -->
+    <link rel="stylesheet" type="text/css" href="../css/animate.css">
+    <style>
+      /* Custom styles for animations */
+      .animated {
+        animation-duration: 1s;
+        animation-fill-mode: both;
+      }
+      @keyframes slideInDown {
+        0% {
+          opacity: 0;
+          transform: translateY(-100%);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .slideInDown {
+        animation-name: slideInDown;
+      }
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      .fadeIn {
+        animation-name: fadeIn;
+      }
+    </style>
   </head>
   <body class="app sidebar-mini rtl">
     <!-- Navbar-->
@@ -28,10 +60,10 @@
     <?php include 'include/sidebar.php'; ?>
     <main class="app-content">  
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 animated slideInDown">
           <div class="tile">
-            <h3 align="center"> Salary Details</h3>
-            <hr />
+            <h3 align="center" class="animated fadeIn"> Salary Details</h3>
+            <hr class="animated fadeIn">
             <div class="tile-body">
               <?php
                 $sid=$_GET['id'];
@@ -52,12 +84,12 @@
               <table class="table table-hover table-bordered">
                 <tbody>
                   <tr>
-                    <th colspan="4" style="font-size:20px; color:blue;">Personal Info Info</th>
+                    <th colspan="4" style="font-size:20px; color:blue;" class="animated fadeIn">Personal Info Info</th>
                   </tr>
 
                   <tr>
                     <th>EmpId</th> <td><?php echo $result->EmpID;?></td>
-                    <th>Photo</th> <td><img src="<?php echo $result->photo;?>"width=150px; height="130px;"></td>
+                    <th>Photo</th> <td><img src="<?php echo $result->photo;?>" width="150px" height="130px;" class="animated fadeIn"></td>
                   </tr>
 
                   <tr>
@@ -75,7 +107,7 @@
                   </tr>
 
                   <tr>
-                    <th colspan="4" style="font-size:20px; color:blue;">Salary Related Info</th>
+                    <th colspan="4" style="font-size:20px; color:blue;" class="animated fadeIn">Salary Related Info</th>
                   </tr>
 
                   <tr>
@@ -97,15 +129,18 @@
     </main>
     
     <!-- Essential javascripts for application to work-->
-     <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/jquery-3.2.1.min.js"></script>
     <script src="../js/popper.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/plugins/pace.min.js"></script>
     <script type="text/javascript" src="../js/plugins/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="../js/plugins/dataTables.bootstrap.min.js"></script>
-    <script type="text/javascript">$('#sampleTable').DataTable();</script>
-  
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $('#sampleTable').DataTable();
+      });
+    </script>
   </body>
 </html>
 <?php } ?>

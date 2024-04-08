@@ -78,9 +78,7 @@
     </section>
     
     <section class="login-content" style="height:500px; ;">
-      <div class="logo">
-        <h1>Rota Scheduler System</h1>
-      </div>
+      
       
       <div class="login-box">
         <form class="login-form" method="post">

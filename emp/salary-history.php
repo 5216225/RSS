@@ -18,6 +18,45 @@
     <link rel="stylesheet" type="text/css" href="../css/main.css">
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Animation CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/animate.css">
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/dataTables.bootstrap.min.css">
+    <!-- Custom CSS -->
+    <style>
+      /* Additional custom styles for animation */
+      .animated {
+        animation-duration: 1s;
+        animation-fill-mode: both;
+      }
+      @keyframes slideInDown {
+        0% {
+          opacity: 0;
+          transform: translateY(-100%);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .slideInDown {
+        animation-name: slideInDown;
+      }
+      /* Style for the action button */
+      .action-button {
+        display: inline-block;
+        padding: 8px 12px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      .action-button:hover {
+        background-color: #0056b3;
+      }
+    </style>
   </head>
   <body class="app sidebar-mini rtl">
     <!-- Navbar-->
@@ -28,10 +67,10 @@
     <main class="app-content">  
       <div class="row">
         <div class="col-md-12">
-          <div class="tile">
+          <div class="tile animated slideInDown">
             <div class="tile-body">
-              <h2 align="center">Salary History</h2>
-              <hr />
+              <h2 align="center" class="animated fadeIn">Salary History</h2>
+              <hr class="animated fadeIn">
               <table class="table table-hover table-bordered" id="sampleTable">
                 <thead>
                   <tr>
@@ -68,7 +107,7 @@
                     <td><?php echo htmlentities($result->total);?></td>
                     <td><?php echo htmlentities($result->create_date);?></td>
                     <td>
-                      <a href="salary-details.php?id=<?php echo htmlentities($result->sid);?>" target="_blank"><span class="btn btn-primary">View</span>
+                      <a href="salary-details.php?id=<?php echo htmlentities($result->sid);?>" target="_blank" class="action-button animated fadeIn">View</a>
                     </td>
                   </tr>
                 </tbody>
@@ -86,9 +125,8 @@
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/main.js"></script>
     <!-- The javascript plugin to display page loading on top-->
-    <script src="js/plugins/pace.min.js"></script>
-    <!-- Page specific javascripts-->
-    <!-- Data table plugin-->
+    <script src="../js/plugins/pace.min.js"></script>
+    <!-- DataTables JS -->
     <script type="text/javascript" src="../js/plugins/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="../js/plugins/dataTables.bootstrap.min.js"></script>
     <script type="text/javascript">
