@@ -278,6 +278,7 @@ body{
     <title>RSS | Login</title>
 </head>
 <body>
+    <h1 style="margin-bottom:20px;">Rota Scheduler System (RSS)</h1>
     <div class="container" id="container">
         <div class="form-container sign-up">
             <form class="forget-form" method="post">
@@ -330,7 +331,7 @@ body{
                     <p>Have you forgotten your password, then click here</p>
                     <button class="hidden" id="register">Forgot Password</button>
                 </div>
-                
+
             </div>
         </div>
     </div>
