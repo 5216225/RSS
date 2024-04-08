@@ -124,7 +124,7 @@ if(strlen($_SESSION["adminid"])==0){
     <!-- Dashboard container -->
     <div class="dashboard-container">
         <div class="dashboard-content">
-            <h1><i class="fa fa-dashboard animated-icon"></i> Dashboard</h1>
+            <h1><i class="fa fa-dashboard"></i> Dashboard</h1>
 
             <div class="row">
                 <?php
@@ -138,7 +138,7 @@ if(strlen($_SESSION["adminid"])==0){
                         <i class="fa fa-users fa-3x"></i>
                         <div class="info">
                             <h4>Registered Employees</h4>
-                            <p><b><?php echo $regemp; ?></b></p>
+                            <p style="color:white;"><b><?php echo $regemp; ?></b></p>
                         </div>
                     </div>
                 </div>
@@ -154,7 +154,7 @@ if(strlen($_SESSION["adminid"])==0){
                         <i class="fa fa-files-o fa-3x"></i>
                         <div class="info">
                             <h4>Listed Departments</h4>
-                            <p><b><?php echo $listeddept; ?></b></p>
+                            <p style="color:white;"><b><?php echo $listeddept; ?></b></p>
                         </div>
                     </div>
                 </div>
@@ -170,7 +170,7 @@ if(strlen($_SESSION["adminid"])==0){
                         <i class="fa fa-star fa-3x"></i>
                         <div class="info">
                             <h4>Listed Leave Type</h4>
-                            <p><b><?php echo $listedleavetype; ?></b></p>
+                            <p style="color:white;"><b><?php echo $listedleavetype; ?></b></p>
                         </div>
                     </div>
                 </div>
@@ -193,7 +193,7 @@ if(strlen($_SESSION["adminid"])==0){
                         <i class="fa fa-files-o fa-3x"></i>
                         <div class="info">
                             <h4>Leaves Applied</h4>
-                            <p><b><?php echo $totalleaves; ?></b></p>
+                            <p style="color:white;"><b><?php echo $totalleaves; ?></b></p>
                         </div>
                     </div>
                 </div>
@@ -209,7 +209,7 @@ if(strlen($_SESSION["adminid"])==0){
                         <i class="fa fa-file fa-3x"></i>
                         <div class="info">
                             <h4>New Leave Requests</h4>
-                            <p><b><?php echo $newleaves; ?></b></p>
+                            <p style="color:white;"><b><?php echo $newleaves; ?></b></p>
                         </div>
                     </div>
                 </div>
@@ -225,7 +225,7 @@ if(strlen($_SESSION["adminid"])==0){
                         <i class="fa fa-file fa-3x"></i>
                         <div class="info">
                             <h4>Rejected Leave Requests</h4>
-                            <p><b><?php echo $rejectedleaves; ?></b></p>
+                            <p style="color:white;"><b><?php echo $rejectedleaves; ?></b></p>
                         </div>
                     </div>
                 </div>
@@ -241,7 +241,7 @@ if(strlen($_SESSION["adminid"])==0){
                         <i class="fa fa-file fa-3x"></i>
                         <div class="info">
                             <h4>Approved Leave Requests</h4>
-                            <p><b><?php echo $approvedleaves; ?></b></p>
+                            <p style="color:white;"><b><?php echo $approvedleaves; ?></b></p>
                         </div>
                     </div>
                 </div>

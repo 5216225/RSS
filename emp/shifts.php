@@ -10,7 +10,7 @@ if (strlen($_SESSION["Empid"]) == 0) {
 <html lang="en">
 
 <head>
-    <title>RSS | Get Shift</title>
+    <title>RSS | Shifts</title>
     <meta charset="utf-8">
     <!-- Main CSS-->
     <link rel="stylesheet" type="text/css" href="../css/main.css">
@@ -140,10 +140,10 @@ if (strlen($_SESSION["Empid"]) == 0) {
                                     } 
                                     else {
                                         if ($result->EmpID == $EmpID) {
-                                            echo '<span class="no-action-badge animated fadeIn">No Action Needed</span>';
+                                            echo '<span class="btn btn-success animated fadeIn">Assigned to me</span>';
                                         } 
                                         else {
-                                            echo '<span class="assigned-badge animated fadeIn">Assigned to different employee</span>';
+                                            echo '<span class="btn btn-warning animated fadeIn">Assigned to different employee</span>';
                                             echo '<button class="btn-swap-shift" onclick="swapShift('.$result->id.')">Swap Shift</button>';
                                         }
                                     }

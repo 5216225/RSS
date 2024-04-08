@@ -13931,8 +13931,8 @@ be a descendant of the grid when it is being dragged.
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 5px 5px 5px 20px;
-  font-size: 1em;
+  padding: 20px 20px 20px 20px;
+  font-size: 2em;
   color: #fff;
 }
 
@@ -14680,8 +14680,8 @@ be a descendant of the grid when it is being dragged.
 .widget-small .info h4 {
   text-transform: uppercase;
   margin: 0;
+  font-weight: bolder;
   margin-bottom: 5px;
-  font-weight: 400;
   font-size: 1.1rem;
 }
 

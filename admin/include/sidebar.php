@@ -55,3 +55,61 @@
     </li>
   </ul>
 </aside>   
+
+<style>
+/* Sidebar Styles */
+.app-sidebar {
+  background-color: #fff; /* White background color */
+  width: 250px; /* Set the width */
+  height: 100%; /* Make it full height */
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: auto; /* Add scrollbar if content overflows */
+  box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Add shadow */
+  transition: all 0.3s ease; /* Add transition for smooth animation */
+}
+
+.app-menu {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.app-menu__item {
+  text-decoration: none;
+  color: #333; /* Dark text color */
+  display: block;
+  padding: 15px 20px;
+  transition: all 0.3s ease; /* Add transition */
+}
+
+.app-menu__item:hover {
+  background-color: black; /* Light background color on hover */
+}
+
+.app-menu__icon {
+  margin-right: 10px;
+}
+
+.app-menu__label {
+  vertical-align: middle;
+}
+
+.treeview-indicator {
+  float: right;
+  margin-top: 2px;
+}
+
+.treeview-menu {
+  padding-left: 20px;
+  overflow: hidden; /* Hide submenu items */
+  max-height: 0; /* Initially hide submenu */
+  transition: all 0.3s ease; /* Add transition for smooth animation */
+}
+
+.treeview-item.active .treeview-menu {
+  max-height: 200px; /* Set max-height to show submenu items */
+}
+
+</style>

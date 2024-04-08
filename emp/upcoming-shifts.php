@@ -68,6 +68,8 @@ if (strlen($_SESSION["Empid"]) == 0) {
                                 </tbody>
                             </table>
                         </div>
+                        <!-- Print Schedule Button -->
+                        <button id="printScheduleBtn" class="btn btn-primary">Print Schedule</button>
                     </div>
                 </div>
             </div>
@@ -89,6 +91,13 @@ if (strlen($_SESSION["Empid"]) == 0) {
                 "searching": true, // Enable searching
                 "info": true // Enable table information display
             });
+        });
+    </script>
+    <!-- JavaScript for Print Schedule Functionality -->
+    <script>
+        // Function to trigger print action when "Print Schedule" button is clicked
+        document.getElementById("printScheduleBtn").addEventListener("click", function() {
+            window.print();
         });
     </script>
 </body>
