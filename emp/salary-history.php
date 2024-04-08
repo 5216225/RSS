@@ -47,7 +47,7 @@
         display: inline-block;
         padding: 8px 12px;
         background-color: #007bff;
-        color: #fff;
+        color: white;
         border: none;
         border-radius: 4px;
         cursor: pointer;
@@ -55,6 +55,8 @@
       }
       .action-button:hover {
         background-color: #0056b3;
+        color: white;
+        text-decoration: none;
       }
     </style>
   </head>
@@ -102,9 +104,9 @@
                     <td><?php echo($cnt);?></td>
                     <td><?php echo htmlentities($result->empid);?></td>
                     <td><?php echo htmlentities($result->DepartmentName);?></td>
-                    <td><?php echo htmlentities($result->salary);?></td>
-                    <td><?php echo htmlentities($result->allowancesalary);?></td>
-                    <td><?php echo htmlentities($result->total);?></td>
+                    <td>£<?php echo htmlentities($result->salary);?>.00</td>
+                    <td>£<?php echo htmlentities($result->allowancesalary);?>.00</td>
+                    <td>£<?php echo htmlentities($result->total);?>.00</td>
                     <td><?php echo htmlentities($result->create_date);?></td>
                     <td>
                       <a href="salary-details.php?id=<?php echo htmlentities($result->sid);?>" target="_blank" class="action-button animated fadeIn">View</a>

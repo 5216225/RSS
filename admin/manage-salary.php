@@ -90,9 +90,9 @@
                       <td><?php echo($cnt);?></td>
                       <td><?php echo htmlentities($result->empid);?></td>
                       <td><?php echo htmlentities($result->DepartmentName);?></td>
-                      <td><?php echo htmlentities($result->salary);?></td>
-                      <td><?php echo htmlentities($result->allowancesalary);?></td>
-                      <td><?php echo htmlentities($result->total);?></td>
+                      <td>£<?php echo htmlentities($result->salary);?>.00</td>
+                      <td>£<?php echo htmlentities($result->allowancesalary);?>.00</td>
+                      <td>£<?php echo htmlentities($result->total);?>.00</td>
                       <td>  
                         <a href="edit-salary.php?id=<?php echo htmlentities($result->empid);?>"><span class="btn btn-success">Edit</span>
                         <a href="salary-details.php?id=<?php echo htmlentities($result->sid);?>"><span class="btn btn-primary">View</span>

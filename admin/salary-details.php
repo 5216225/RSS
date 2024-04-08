@@ -1,7 +1,7 @@
 <?php 
   //error_reporting(0);
   include  'include/config.php';
-  $levid=$_GET['leaveid'];
+  $levid=$_GET['id'];
   if(isset($_POST['submit'])){
     $leaveID=$_POST['leaveID']; 
     $leavestatus = $_POST['leavestatus'];
@@ -128,14 +128,14 @@
 
                   <tr>
                     <th>Salary</th>
-                    <td><?php echo $result->salary;?></td>
+                    <td>£<?php echo $result->salary;?>.00</td>
                     <th>Allowance</th>
-                    <td><?php echo $result->allowancesalary;?></td>
+                    <td>£<?php echo $result->allowancesalary;?>.00</td>
                   </tr>
 
                   <tr>
                     <th>Total</th>
-                    <td><?php echo $result->total;?></td>
+                    <td>£<?php echo $result->total;?>.00</td>
                     <th>Creation Date</th>
                     <td><?php echo $result->create_date;?></td>
                   </tr>
