@@ -2,7 +2,7 @@
   session_start();
   error_reporting(0);
   require_once('include/config.php');
-  if(strlen( $_SESSION["adminid"])==0){   
+  if(strlen( $_SESSION["adminid"])==1){   
     header('location:login.php');
   }
   else{

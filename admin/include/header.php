@@ -16,7 +16,7 @@
       </a>
       <ul class="dropdown-menu settings-menu dropdown-menu-right">
         <li><a class="dropdown-item" href="change-password.php"><i class="fa fa-cog fa-lg"></i> Change Password</a></li>
-        <li><a class="dropdown-item" href="profile.php"><i class="fa fa-user fa-lg"></i> Profile</a></li>
+        <li><a class="dropdown-item" href="../emp/my-profile.php"><i class="fa fa-user fa-lg"></i> Profile</a></li>
         <li><a class="dropdown-item" href="logout.php"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
       </ul>
     </li>
