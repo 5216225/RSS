@@ -1,11 +1,17 @@
 <?php 
 error_reporting(0);
-include  'include/config.php';
+include 'include/config.php';
+
+if(isset($_POST['submit'])) {
+    $fdate = $_POST['fdate'];
+    $tdate = $_POST['todate'];
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>RSS | Empoyee Report</title>
+    <title>RSS | Employee Report</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,6 +19,105 @@ include  'include/config.php';
     <link rel="stylesheet" type="text/css" href="../css/main.css">
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        /* Add your custom styles here */
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+        }
+        .tile {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-top: 50px;
+        }
+        .tile-title {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+        .table thead th {
+            background-color: #007bff;
+            color: #fff;
+            border-color: #007bff;
+        }
+        .table-hover tbody tr:hover {
+            background-color: #f0f0f0;
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            animation: fadeInUp 0.5s ease forwards;
+        }
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            width: 100%;
+            transition: border-color 0.3s ease;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .alert {
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+        }
+        .alert-success {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+        }
+        .alert-danger {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
+    </style>
 </head>
 <body class="app sidebar-mini">
     <!-- Navbar-->
@@ -36,18 +141,14 @@ include  'include/config.php';
                                 <input class="form-control" type="date" name="todate" id="todate" placeholder="Enter To Date">
                             </div>
                             <div class="form-group text-center">
-                                <input type="submit" name="Submit" id="Submit" class="btn btn-primary" value="Submit">
+                                <input type="submit" name="submit" class="btn btn-primary" value="Submit">
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-        <?php if(Isset($_POST['Submit'])){?>
-        <?php
-          $fdate=$_POST['fdate'];
-          $tdate=$_POST['todate'];
-        ?>
+        <?php if(isset($_POST['submit'])){?>
         <div class="row">
             <div class="col-md-12">
                 <div class="tile">
@@ -67,44 +168,45 @@ include  'include/config.php';
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <?php
-                                $sql="SELECT tblemployee.id,EmpId, fname, lname, department_name, email, mobile, country, state, city, address, photo, 
-                                dob, date_of_joining, create_date,tbldepartment.DepartmentName FROM tblemployee 
-                                left join tbldepartment on tblemployee.department_name=tbldepartment.id
-                                where date(create_date) between :fdate and :tdate";
-
-                                $query= $dbh->prepare($sql);
-                                $query->bindParam(':fdate',$fdate, PDO::PARAM_STR);
-                                $query->bindParam(':tdate',$tdate, PDO::PARAM_STR);
-                                $query-> execute();
-                                $results = $query -> fetchAll(PDO::FETCH_OBJ);
-                                $cnt=1;
-                                if($query -> rowCount() > 0){
-                                    foreach($results as $result){
-                            ?>
                             <tbody>
+                                <?php
+                                $sql = "SELECT tblemployee.id, EmpId, fname, lname, department_name, email, mobile, country, tbldepartment.DepartmentName 
+                                        FROM tblemployee 
+                                        LEFT JOIN tbldepartment ON tblemployee.department_name = tbldepartment.id
+                                        WHERE DATE(create_date) BETWEEN :fdate AND :tdate";
+                                $query = $dbh->prepare($sql);
+                                $query->bindParam(':fdate', $fdate, PDO::PARAM_STR);
+                                $query->bindParam(':tdate', $tdate, PDO::PARAM_STR);
+                                $query->execute();
+                                $results = $query->fetchAll(PDO::FETCH_OBJ);
+                                $cnt = 1;
+                                if($query->rowCount() > 0){
+                                    foreach($results as $result){
+                                ?>
                                 <tr>
-                                    <td><?php echo($cnt);?></td>
+                                    <td><?php echo $cnt;?></td>
                                     <td><?php echo htmlentities($result->EmpId);?></td>
                                     <td><?php echo htmlentities($result->fname);?> <?php echo htmlentities($result->lname);?></td>
                                     <td><?php echo htmlentities($result->email);?></td>
                                     <td><?php echo htmlentities($result->mobile);?></td>
                                     <td><?php echo htmlentities($result->country);?></td>
                                     <td><?php echo htmlentities($result->DepartmentName);?></td>
-                                    <?php  $id=$result->id;?>
                                     <td>  
                                         <a href="emp-details.php?empid=<?php echo htmlentities($result->id);?>" class="btn btn-info">View</a>                    
-                                        <a href="edit-employee.php?empid=<?php echo htmlentities($result->id);?>" target="_blank"><span class="btn btn-success">Edit</span>
-                                        <a href="emp-salary-history.php?empid=<?php echo htmlentities($result->EmpId);?>&&empname=<?php echo htmlentities($result->fname);?>" target="_blank"><span class="btn btn-warning">Salary</span>
-                                        <a href="emp-leave-history.php?empid=<?php echo htmlentities($result->EmpId);?>&&empname=<?php echo htmlentities($result->fname);?>" target="_blank"><span class="btn btn-danger">Leave</span>
+                                        <a href="edit-employee.php?empid=<?php echo htmlentities($result->id);?>" target="_blank" class="btn btn-success">Edit</a>
+                                        <a href="emp-salary-history.php?empid=<?php echo htmlentities($result->EmpId);?>&&empname=<?php echo htmlentities($result->fname);?>" target="_blank" class="btn btn-warning">Salary</a>
+                                        <a href="emp-leave-history.php?empid=<?php echo htmlentities($result->EmpId);?>&&empname=<?php echo htmlentities($result->fname);?>" target="_blank" class="btn btn-danger">Leave</a>
                                     </td>
                                 </tr>
-                            </tbody>
-                            <?php }} else{ ?>      
+                                <?php 
+                                    $cnt++;
+                                    }
+                                } else { ?>      
                                 <tr>
-                                    <th colspan="6" style="color:red">No record found</th>
+                                    <td colspan="8" style="color:red">No records found</td>
                                 </tr> 
-                            <?php } ?> 
+                                <?php } ?> 
+                            </tbody>
                         </table>
                     </div>
                 </div>

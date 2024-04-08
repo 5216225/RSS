@@ -15,11 +15,104 @@ include 'include/config.php';
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
-        .form-container {
-            margin: auto;
-            width: 30%;
+        /* Add your custom styles here */
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
         }
-    </style>
+        .tile {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-top: 50px;
+        }
+        .tile-title {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+        .table thead th {
+            background-color: #007bff;
+            color: #fff;
+            border-color: #007bff;
+        }
+        .table-hover tbody tr:hover {
+            background-color: #f0f0f0;
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            animation: fadeInUp 0.5s ease forwards;
+        }
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            width: 100%;
+            transition: border-color 0.3s ease;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .alert {
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+        }
+        .alert-success {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+        }
+        .alert-danger {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
+    </style>    
 </head>
 <body class="app sidebar-mini rtl">
     <!-- Navbar-->
@@ -29,7 +122,7 @@ include 'include/config.php';
     <?php include 'include/sidebar.php'; ?>
     <main class="app-content">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6 offset-md-3">
                 <div class="tile">
                     <h3 class="tile-title">Leave B/w Dates Report</h3>
                     <div class="tile-body">

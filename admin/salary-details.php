@@ -28,6 +28,44 @@
     <link rel="stylesheet" type="text/css" href="../css/main.css">
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .app-content {
+      padding: 30px;
+    }
+    .tile {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      animation: fadeInUp 0.6s ease-in-out;
+    }
+    h2 {
+      margin-bottom: 30px;
+      color: #333;
+      text-align: center;
+      animation: slideInDown 0.8s ease-in-out;
+    }
+    table {
+      width: 100%;
+      background-color: #fff;
+      animation: slideInUp 0.8s ease-in-out;
+    }
+    th, td {
+      padding: 15px;
+      text-align: left;
+      border-bottom: 1px solid #dee2e6;
+    }
+    th {
+      background-color: #f8f9fa;
+      font-weight: bold;
+    }
+    tbody tr:hover {
+      background-color: #f1f1f1;
+    }
+  </style>
   </head>
   <body class="app sidebar-mini rtl">
     <!-- Navbar-->
