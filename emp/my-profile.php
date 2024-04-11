@@ -183,15 +183,6 @@
                   <label class="control-label">Department</label>
                   <select name="Department" id="Department" class="form-control" onChange="getdistrict(this.value);" readonly >
                     <option value="<?php echo $result->Deptid;?>"><?php echo $result->DeptName;?></option>
-                    <option value="NA">--select--</option>
-                    <?php 
-                      $stmt = $dbh->prepare("SELECT * FROM tbldepartment ORDER BY DepartmentName");
-                      $stmt->execute();
-                      $departList = $stmt->fetchAll();
-                      foreach($departList as $departname){
-                        echo "<option value='".$departname['id']."'>".$departname['DepartmentName']."</option>";
-                      }
-                    ?>
                   </select>
                   <span style="color:red;"><?php echo $deperrormsg;?></span>
                 </div>

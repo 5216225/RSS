@@ -8,8 +8,8 @@
         <i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Leave</span><i class="treeview-indicator fa fa-angle-right"></i>
       </a>
       <ul class="treeview-menu">
-        <li><a class="treeview-item" href="apply-leave.php"><i class="icon fa fa-circle-o"></i>Apply Leave</a></li>
-        <li><a class="treeview-item" href="leave-history.php"><i class="icon fa fa-circle-o"></i>Leave History</a></li>
+        <li><a class="treeview-item" href="apply-leave.php" style="font-size: 16px;"><i class="icon fa fa-circle-o"></i>Apply Leave</a></li>
+        <li><a class="treeview-item" href="leave-history.php" style="font-size: 16px;"><i class="icon fa fa-circle-o"></i>Leave History</a></li>
       </ul>
     </li>
 
@@ -18,8 +18,8 @@
         <i class="app-menu__icon fa fa-comments"></i><span class="app-menu__label">Feedback</span><i class="treeview-indicator fa fa-angle-right"></i>
       </a>
       <ul class="treeview-menu">
-        <li><a class="treeview-item" href="give-feedback.php"><i class="icon fa fa-circle-o"></i>Give Feedback</a></li>
-        <li><a class="treeview-item" href="feedback-history.php"><i class="icon fa fa-circle-o"></i>Feedback History</a></li>
+        <li><a class="treeview-item" href="give-feedback.php" style="font-size: 16px;"><i class="icon fa fa-circle-o"></i>Give Feedback</a></li>
+        <li><a class="treeview-item" href="feedback-history.php" style="font-size: 16px;"><i class="icon fa fa-circle-o"></i>Feedback History</a></li>
       </ul>
     </li>
 
@@ -28,8 +28,8 @@
         <i class="app-menu__icon fa fa-suitcase"></i><span class="app-menu__label">Shifts</span><i class="treeview-indicator fa fa-angle-right"></i>
       </a>
       <ul class="treeview-menu">
-        <li><a class="treeview-item" href="shifts.php"><i class="icon fa fa-circle-o"></i>Shifts</a></li>
-        <li><a class="treeview-item" href="upcoming-shifts.php"><i class="icon fa fa-circle-o"></i>View your Schedule</a></li>
+        <li><a class="treeview-item" href="shifts.php" style="font-size: 16px;"><i class="icon fa fa-circle-o"></i>Shifts</a></li>
+        <li><a class="treeview-item" href="upcoming-shifts.php" style="font-size: 16px;"><i class="icon fa fa-circle-o"></i>View your Schedule</a></li>
       </ul>
     </li>
 
